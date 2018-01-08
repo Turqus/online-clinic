@@ -1,0 +1,28 @@
+.contact-form {
+    form {
+
+        max-width: 400px;
+        margin: auto;
+        text-align: left !important;
+        h6 {
+            text-align: center !important;
+        }
+
+        label {
+            margin-top: 20px;
+        }
+
+        button {
+           margin-top: 15px; 
+        }
+    }
+}
+
+.validateInfo {
+            span {
+            color: red;
+            font-size: 10px;
+        }
+}
+
+

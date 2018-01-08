@@ -1,0 +1,23 @@
+// BASE
+@import 'sass/base/_reset.scss';
+
+// PAGES 
+@import 'sass/pages/_index.scss';
+@import 'sass/pages/_register.scss';
+@import 'sass/pages/_login.scss';
+@import 'sass/pages/_doctors.scss';
+@import 'sass/pages/_clinics.scss';
+@import 'sass/pages/_treatments.scss';
+@import 'sass/pages/_contact.scss';
+@import 'sass/pages/_reservation-visit.scss';
+@import 'sass/pages/_card-patient.scss';
+@import 'sass/pages/_profile.scss';
+@import 'sass/pages/_appointments.scss';
+
+// COMPONENT
+@import 'sass/components/_table.scss';
+
+// LAYOUT
+@import 'sass/layout/_footer.scss';
+@import 'sass/layout/_header.scss';
+@import 'sass/layout/_menu.scss';

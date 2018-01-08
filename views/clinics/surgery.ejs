@@ -1,0 +1,58 @@
+<% include ../partials/head.ejs %>
+  <% include ../partials/header.ejs %>
+
+    <div class="container" ng-app="app">
+      <div class="row">
+        <% include ../partials/menu.ejs %>
+
+          <div class="col-md-9 news">
+            <h3>Aktualności</h3>
+            <hr>
+            <div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="images/klinika1.jpg" alt="photo clinic of <%= title %>" class="img-responsive">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="info-name">
+                  <h4>
+                    <%= title %>
+                  </h4>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent justo felis, interdum eget consectetur et, vehicula non
+                    lectus. Integer rhoncus est ac enim luctus fermentum. Curabitur non leo rhoncus, blandit risus at, malesuada
+                    nunc. Nam posuere odio vel nibh porttitor ultrices. Praesent pretium ipsum massa, quis sollicitudin elit
+                    tincidunt et. Donec sit amet libero iaculis, efficitur sapien id, sodales risus. Donec vel eros lacinia
+                    tortor auctor tristique. Quisque lectus ligula, commodo sit amet dapibus vel, rhoncus tristique nisi.
+                    nunc. Nam posuere odio vel nibh porttitor ultrices. Praesent pretium ipsum massa, quis sollicitudin elit
+                    tincidunt et. Donec sit amet libero iaculis, efficitur sapien id, sodales risus. Donec vel eros lacinia
+                    tortor auctor tristique. Quisque lectus ligula, commodo sit amet dapibus vel, rhoncus tristique nisi.
+                  </p> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 info-bottom ">
+                  <a href="/marek-antoni/reservation-visit" class="btn btn-success pull-right">Dokonaj rezerwacji wizyty</a>
+                  <a href="/marek-treatments" class="btn btn-primary pull-left">Wykonywane zabiegi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <% include ../partials/footer.ejs %>
+    <script src="/javascripts/controllers/MenuCtrl.js"></script>
+      </body>
+
+      </html>

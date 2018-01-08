@@ -1,0 +1,75 @@
+<% include partials/head.ejs %>
+  <% include partials/header.ejs %>
+
+    <div class="container" ng-app="app">
+      <div class="row">
+        <% include partials/menu.ejs %>
+
+          <div class="col-md-9 news" ng-controller="ContactCtrl"> 
+            <h3>Kontakt</h3>
+            <hr class="hidden-sm hidden-xs">
+            <div>
+              <div class="row">
+                <div>
+                  <h4>Masz pytania? Mapisz do mnie.</h4>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 contact-form">
+                  <form name="contact" class="validateInfo" novalidate>
+                    <h6>Wiadomość do :
+                      <%= recipient %>
+                    </h6>
+
+                      
+                    <div class="form-group" ng-class="{ 'has-error': contact.title.$invalid && contact.title.$touched }">
+                      <label for="">Tytuł</label>
+                      <span ng-if="contact.title.$touched && contact.title.$error.required">Pole jest wymagane</span>
+                      <span ng-show="contact.title.$touched && contact.title.$error.minlength">Za krótki tytuł</span>
+                      <span ng-show="contact.title.$touched && contact.title.$error.maxlength">Za długi tytuł</span>
+                      <input type="text" class="form-control" ng-model="message.title" placeholder="Wprowadź tytuł..." name="title" ng-required="true"
+                        ng-minlength="1" ng-maxlength="55">
+                    </div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error': contact.name.$invalid && contact.name.$touched }">
+                      <label for="">Imię i Nazwisko</label>
+                      <span ng-if="contact.name.$touched && contact.name.$error.required">Pole jest wymagane</span>
+                      <span ng-show="contact.name.$touched && contact.name.$error.minlength">Za krótkię imię i nazwisko</span>
+                      <span ng-show="contact.name.$touched && contact.name.$error.maxlength">Za długie imie i nazwisko</span>
+                      <input type="text" class="form-control" ng-model="message.name" placeholder="Wprowadź imię i nazwisko..." name="name" ng-required="true"
+                        ng-minlength="3" ng-maxlength="55">
+                    </div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error': contact.email.$invalid && contact.email.$touched }">
+                      <label for="">Twój adres e-mail</label>
+                      <span ng-if="contact.email.$touched && contact.email.$error.required">Pole jest wymagane</span>
+                      <span ng-show="contact.email.$touched && contact.email.$error.email">Adres e-mail nie jest poprawny</span>
+                      <input type="email" class="form-control" ng-model="message.email" placeholder="Wprowadź twój adres e-mail..." name="email"
+                        ng-required="true">
+                    </div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error': contact.message.$invalid && contact.message.$touched }">
+                      <label for="">Treść</label>
+                      <span ng-if="contact.message.$touched && contact.message.$error.required">Pole jest wymagane</span>
+                      <span ng-show="contact.message.$touched && contact.message.$error.minlength">Za krótka wiadomość</span>
+                      <span ng-show="contact.message.$touched && contact.message.$error.maxlength">Za długa wiadomość</span>
+                      <textarea cols="15" rows="4" class="form-control" ng-model="message.text" placeholder="Napisz wiadomość..." name="message"
+                        ng-required="true" ng-minlength="3" ng-maxlength="255"></textarea>
+                    </div class="form-group">
+
+                      <h4 ng-show="info" class="info">{{info}}</h4>
+                    <button class="btn btn-success pull-right" ng-click="test(message, <%= JSON.stringify(recipient) %>)" ng-disabled="contact.$invalid">Wyślij</button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+    <% include partials/footer.ejs %>
+      <script src="/javascripts/controllers/ContactCtrl.js"></script>
+      <script src="/javascripts/controllers/MenuCtrl.js"></script>
+      </body>
+
+      </html>

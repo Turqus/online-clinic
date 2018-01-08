@@ -1,0 +1,44 @@
+ ul {
+   padding: 0;
+   margin: 0;
+   list-style-type: none;
+ }
+
+ a {
+   color: black;
+   &:hover {
+     color: black;
+     text-decoration: none;
+   }
+
+   &:link {
+     text-decoration: none;
+   }
+
+   &:visited {
+     color: black;
+   }
+ }
+
+.container-fluid {
+  padding: 0 !important;
+}
+
+ .navbar-header {
+
+   button {
+     margin : 0 !important;
+   }
+ }
+
+ * {
+   box-sizing: border-box;
+ }
+ 
+ header {
+   margin: 0px !important;
+   padding: 0px !important;
+ }
+ 
+ .center-block {
+  float: none !important; }

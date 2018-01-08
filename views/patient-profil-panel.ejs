@@ -1,0 +1,82 @@
+<% include partials/head.ejs %>
+  <% include partials/header.ejs %>
+
+    <div class="container" ng-app="app" ng-controller="PatientProfilCtrl" ng-init="init('<%= JSON.stringify(patient) %>', '<%=  doctorName  %>')">
+
+      <div class="row">
+        <% include partials/menu.ejs %>
+
+          <div class="col-md-9 news"> 
+            <h3>Karta Pacjenta</h3> 
+            <hr class="hidden-sm hidden-xs">
+            <div>
+              <div class="row">
+                <div class="col-md-12">
+                  Proszę wybrać kartę pacjenta :
+                  <select ng-model="card" ng-change="changeCard(card)">
+                  <option value="{{$index}}" ng-repeat="card in patient.patientCards">{{card.name}}</option>
+                </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 patientForm">
+                  <h4>Dodaj wpis:</h4>
+                  <form name="addRegistration" novalidate>
+                    <form-group ng-class="{ 'has-error': addRegistration.registration.$invalid && addRegistration.registration.$touched }">
+                      <label for="">Treść</label>
+                      <span ng-if="addRegistration.registration.$touched && addRegistration.registration.$error.required">Pole jest wymagane</span>
+                      <span ng-show="addRegistration.registration.$touched && addRegistration.registration.$error.minlength">Za krótki tytuł</span>
+                      <span ng-show="addRegistration.registration.$touched && addRegistration.registration.$error.maxlength">Za długi tytuł</span>
+                      <textarea cols="30" rows="5" ng-model="registry" class="form-control" name="registration" ng-required="true" minlength="1"
+                        maxlength="500"></textarea> 
+                    </form-group>
+                    <button class="btn btn-success pull-right" ng-click="addRegistry(registry)" ng-disabled="addRegistration.$invalid">Dodaj wpis</button>
+                  </form>
+                </div>
+              </div>
+
+
+              <div class="patientAccordion">
+                <div class="panel-group" id="accordion" ng-repeat="item in selectedCard">
+                  <!--akordeon-->
+                  <div class="panel panel-default">
+                    <!--default-->
+                    <div class="panel-heading">
+                      <!--panel heading-->
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#{{$index}}">{{$index + 1}}. Informacja wystawiona przez <b> {{item.doctor}}</b> </a>
+                      </h4>
+                      <!--/panel heading-->
+                    </div>
+                    <div id="{{$index}}" class="panel-collapse collapse">
+                      <!--collapse-->
+                      <div class="panel-body">
+                        <h4>Dodana:</h4>
+                        <span>{{item.created | date:'dd.MM.yyyy HH:mm:ss'}} </span>
+
+                        <h4>Informacja:</h4>
+                        <span>{{item.information}}</span>
+                      </div>
+                      <!--collapse-->
+                    </div>
+                    <!--/default-->
+                  </div>
+                  <!--/akordeon-->
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+    <% include partials/footer.ejs %>
+      <script src="/javascripts/controllers/PatientProfilCtrl.js"></script>
+      <script src="/javascripts/controllers/MenuCtrl.js"></script>
+      </body>
+
+      </html>

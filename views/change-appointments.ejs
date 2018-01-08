@@ -1,0 +1,71 @@
+<% include partials/head.ejs %>
+  <% include partials/header.ejs %>
+
+    <div class="container" ng-app="app" ng-controller="ChangeAppoinmentsCtrl" ng-init="init(<%= JSON.stringify(visit) %>)">
+
+      <div class="row">
+        <% include partials/menu.ejs %>
+
+          <div class="col-md-9 news"> 
+            <h3>Aktualności</h3>
+            <hr class="hidden-sm hidden-xs">
+            <div class="row">
+              <div>
+                <h4>Umów Wizytę:</h4>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-6 calendar">
+                <datepicker date-format="yyyy-MM-dd" date-min-limit="{{dateFrom}}" date-max-limit="{{dateTo}}" selector="form-control">
+ 
+
+                    <span ng-show="info" class="info">{{info}}</span>
+
+                    <form name="reservationVisit" novalidate>
+                      <span ng-if="error.ok === false">{{error.date.name}}</span>
+                      <span ng-if="reservationVisit.date.$touched && reservationVisit.date.$error.required">Pole jest wymagane</span>
+                      <div class="form-group" ng-class="{ 'has-error': reservationVisit.date.$invalid && reservationVisit.date.$touched }">
+                        <label for=""><i class="fa fa-lg fa-calendar"></i></label>
+                        <input class="form-control" placeholder="Choose a date" ng-model="dateVisit.dateOfTheVisit" name="date" ng-required="true" />
+                      </div>
+
+                      <span ng-if="reservationVisit.time.$touched && reservationVisit.time.$error.required">Pole jest wymagane</span>
+                      <div class="form-group" ng-class="{ 'has-error': reservationVisit.time.$invalid && reservationVisit.time.$touched }">
+                        <label for=""><i class="fa fa-clock-o"></i></label>
+                        <select class="form-control" ng-model="dateVisit.timeOfTheVisit" name="time" ng-required="true">
+                           <option disabled value>Wybierz Godzine</option>
+                  <option ng-repeat="time in hoursOfAdmission" value="{{time.from}}" >{{time.from}} </option>  
+                </select>
+                      </div>
+
+
+                      <button class="btn btn-success pull-right" ng-click="bookVisit(dateVisit)" ng-disabled="reservationVisit.$invalid">Zarezerwuj</button>
+                    </form> 
+                </datepicker>
+
+
+              </div>
+              <div class="col-md-6 information">
+                <span>Termin wizyty na dzień : {{dateVisit.dateOfTheVisit || 'Brak wybranej daty'}}</span>
+                <span>Godzina : {{dateVisit.timeOfTheVisit || 'Brak wybranej godziny'}}</span>
+              </div>
+            </div>
+
+  
+            </div>
+          </div>
+
+      </div>
+    </div>
+    </div>
+
+    <% include partials/footer.ejs %>
+
+      <script src="/javascripts/controllers/ChangeAppoinmentsCtrl.js"></script>
+      <script src="/javascripts/controllers/MenuCtrl.js"></script>
+      </body>
+
+      </html>

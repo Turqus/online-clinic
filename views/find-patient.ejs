@@ -1,0 +1,64 @@
+<% include partials/head.ejs %>
+  <% include partials/header.ejs %>
+
+    <div class="container" ng-app="app" ng-controller="FindPatientCtrl" ng-init="init()">
+      <div class="row">
+        <% include partials/menu.ejs %>
+
+          <div class="col-md-9 news"> 
+            <h3>Karta Pacjenta</h3>
+            <hr class="hidden-sm hidden-xs">
+            <div>
+
+              <div class="row">
+                <div class="col-md-12"> 
+                  <form>
+                    <label for="">Znajdź Pacjenta</label>
+                    <input type="text" class="form-control" ng-model="patientName" ng-change="findPatient(patientName, doctorName)">
+
+                    <button class="btn btn-success">Szukaj</button>
+                  </form>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-hover">
+                    <tr>
+                      <th> Lp. </th>
+                      <th> Imię </th>
+                      <th> Nazwisko </th>
+                      <th> Miasto </th>
+                      <th> Państwo </th>
+                      <th> Telefon </th>
+                      <th> Email </th>
+                      <th> Akcja </th>
+                    </tr>
+                    <tr ng-repeat="patient in finededPatient">
+                      <td> {{$index + 1}} </td>
+                      <td> {{patient.firstName}} </td>
+                      <td> {{patient.surname}} </td>
+                      <td> {{patient.city}} </td>
+                      <td> {{patient.country}} </td>
+                      <td> {{patient.phone}} </td>
+                      <td> {{patient.email}} </td>
+                      <td> <a href="/find-patient/{{patient._id}}" class="btn btn-warning">Profil Pacjenta</a> </td>
+                    </tr>
+                  </table>
+
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+    <% include partials/footer.ejs %> 
+    <script src="/javascripts/controllers/MenuCtrl.js"></script> 
+    <script src="/javascripts/controllers/FindPatientCtrl.js"></script> 
+      </body>
+
+      </html>

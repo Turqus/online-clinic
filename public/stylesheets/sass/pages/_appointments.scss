@@ -1,0 +1,10 @@
+.table-responsive{
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 600px){
+.table-responsive{
+    font-size: 11px;
+}
+}
