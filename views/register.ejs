@@ -16,123 +16,86 @@
         <div class="row register">
           <div class="col-md-4 col-xs-9 col-sm-7 center-block">
             <h1>Tworzenie konta</h1>
-            <% if (success_msg.length > 0) { %>
-              <div class="alert alert-success">
-                <%= success_msg %>
+
+            <form name="register" class="validateInfo" action="/registerUser" method="post" novalidate>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.username.$invalid && register.username.$touched }">
+                <label for="">Login</label>
+                <span ng-if="register.username.$touched && register.username.$error.required">Pole jest wymagane</span>
+                <span ng-show="register.username.$touched && register.username.$error.minlength">Za krótki login</span>
+                <span ng-show="register.username.$touched && register.username.$error.maxlength">Za długi login</span>
+                <input type="text" class="form-control" ng-model="user.username" name="username" placeholder="np. jankowalski" ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
               </div>
-              <% } %>
-                <% if (error_msg.length > 0) { %>
-                  <div class="alert alert-danger">
-                    <%= error_msg %>
-                  </div>
-                  <% } %>
 
-                    <form name="register" class="validateInfo" action="/registerUser" method="post" novalidate>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.username.$invalid && register.username.$touched }">
-                        <label for="">Login</label>
-                        <% if (errors && errors.username) { %>
-                          <span><%= errors.username.msg %></span>
-                          <% } %>
-                            <span ng-if="register.username.$touched && register.username.$error.required">Pole jest wymagane</span>
-                            <span ng-show="register.username.$touched && register.username.$error.minlength">Za krótki login</span>
-                            <span ng-show="register.username.$touched && register.username.$error.maxlength">Za długi login</span>
-                            <input type="text" class="form-control" ng-model="user.username" name="username" placeholder="np. jankowalski" ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.email.$invalid && register.email.$touched }">
+                <label for="">Email</label>
+                <span ng-if="register.email.$touched && register.email.$error.required">Pole jest wymagane</span>
+                <span ng-show="register.email.$touched && register.email.$error.email">Adres e-mail nie jest poprawny</span>
+                <input type="text" class="form-control" ng-model="user.email" name="email" placeholder="np. jan.kowalski@gmail.com" ng-required="true">
+              </div>
 
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.email.$invalid && register.email.$touched }">
-                        <label for="">Email</label>
-                        <% if (errors && errors.email) { %>
-                          <span><%= errors.email.msg %></span>
-                          <% } %>
-                            <span ng-if="register.email.$touched && register.email.$error.required">Pole jest wymagane</span>
-                            <span ng-show="register.email.$touched && register.email.$error.email">Adres e-mail nie jest poprawny</span>
-                            <input type="email" class="form-control" ng-model="user.email" name="email" placeholder="np. jan.kowalski@gmail.com" ng-required="true">
-                      </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.password.$invalid && register.password.$touched }">
+                <label for="">Hasło</label>
+                <span ng-if="register.password.$touched && register.password.$error.required">Hasło jest wymagane</span>
+                <span ng-show="register.password.$touched && register.password.$error.minlength">Za krótkie hasło</span>
+                <span ng-show="register.password.$touched && register.password.$error.maxlength">Za długie hasło</span>
+                <input type="password" class="form-control" ng-model="user.password" name="password" placeholder="np. ********" ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
 
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.password.$invalid && register.password.$touched }">
-                        <label for="">Hasło</label>
-                        <% if (errors && errors.password) { %>
-                          <span><%= errors.password.msg %></span>
-                          <% } %>
-                            <span ng-if="register.password.$touched && register.password.$error.required">Hasło jest wymagane</span>
-                            <span ng-show="register.password.$touched && register.password.$error.minlength">Za krótkie hasło</span>
-                            <span ng-show="register.password.$touched && register.password.$error.maxlength">Za długie hasło</span>
-                            <input type="password" class="form-control" ng-model="user.password" name="password" placeholder="np. ********" ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.confirmPassword.$invalid && register.confirmPassword.$touched }">
+                <label for="">Powtórz hasło</label>
+                <span ng-if="register.confirmPassword.$touched && register.confirmPassword.$error.required">Hasło jest wymagane</span>
+                <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.minlength">Za krótkie hasło</span>
+                <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.maxlength">Za długie hasło</span>
+                <input type="password" class="form-control" ng-model="user.confirmPassword" name="confirmPassword" placeholder="np. ********"
+                  ng-required="true" ng-minlength="3" ng-maxlength="50">
+              </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.firstName.$invalid && register.firstName.$touched }">
+                <label for="">Wprowadź Imię</label>
+                <span ng-if="register.firstName.$touched && register.firstName.$error.required">Imię jest wymagane</span>
+                <span ng-show="register.firstName.$touched && register.firstName.$error.minlength">Za krótkie imię</span>
+                <span ng-show="register.firstName.$touched && register.firstName.$error.maxlength">Za długie imię</span>
+                <input type="text" class="form-control" ng-model="user.firstName" name="firstName" placeholder="np. Jan..." ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.surname.$invalid && register.surname.$touched }">
+                <label for="">Wprowadź Nazwisko</label>
+                <span ng-if="register.surname.$touched && register.surname.$error.required">Nazwisko jest wymagane</span>
+                <span ng-show="register.surname.$touched && register.surname.$error.minlength">Za krótkie nazwisko</span>
+                <span ng-show="register.surname.$touched && register.surname.$error.maxlength">Za długie nazwisko</span>
+                <input type="text" class="form-control" ng-model="user.surname" name="surname" placeholder="np. Kowalski..." ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.confirmPassword.$invalid && register.confirmPassword.$touched }">
+                <label for="">Wprowadź Miasto</label>
+                <span ng-if="register.confirmPassword.$touched && register.confirmPassword.$error.required">Miasto jest wymagane</span>
+                <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.minlength">Za krótkie miasto</span>
+                <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.maxlength">Za długie miasto</span>
+                <input type="text" class="form-control" ng-model="user.city" name="city" placeholder="np. Jarosław..." ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.country.$invalid && register.country.$touched }">
+                <label for="">Wprowadź Państwo</label>
+                <span ng-if="register.country.$touched && register.country.$error.required">Państwo jest wymagane</span>
+                <span ng-show="register.country.$touched && register.country.$error.minlength">Za krótkie państwo</span>
+                <span ng-show="register.country.$touched && register.country.$error.maxlength">Za długie państwo</span>
+                <input type="text" class="form-control" ng-model="user.country" name="country" placeholder="np. Polska..." ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
+              <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.phone.$invalid && register.phone.$touched }">
+                <label for="">Wprowadź numer telefonu</label>
+                <span ng-if="register.phone.$touched && register.phone.$error.required">Numer telefonu jest wymagany</span>
+                <span ng-show="register.phone.$touched && register.phone.$error.minlength">Za krótki numer telefonu</span>
+                <span ng-show="register.phone.$touched && register.phone.$error.maxlength">Za długi numer telefonu</span>
+                <input type="text" class="form-control" ng-model="user.phone" name="phone" placeholder="np. 667667667" ng-required="true"
+                  ng-minlength="3" ng-maxlength="50">
+              </div>
+              <button type="submit" class="btn btn-success pull-right" ng-disabled="register.$invalid">Zarejestruj się</button>
+            </form>
+            <br><br><br>
 
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.confirmPassword.$invalid && register.confirmPassword.$touched }">
-                        <label for="">Powtórz hasło</label>
-                        <% if (errors && errors.confirmPassword) { %>
-                          <span><%= errors.confirmPassword.msg %></span>
-                          <% } %>
-                            <span ng-if="register.confirmPassword.$touched && register.confirmPassword.$error.required">Hasło jest wymagane</span>
-                            <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.minlength">Za krótkie hasło</span>
-                            <span ng-show="register.confirmPassword.$touched && register.confirmPassword.$error.maxlength">Za długie hasło</span>
-                            <input type="password" class="form-control" ng-model="user.confirmPassword" name="confirmPassword" placeholder="np. ********"
-                              ng-required="true" ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.firstName.$invalid && register.firstName.$touched }">
-                        <label for="">Wprowadź Imię</label>
-                        <% if (errors && errors.firstName) { %>
-                          <span><%= errors.firstName.msg %></span>
-                          <% } %>
-                            <span ng-if="register.firstName.$touched && register.firstName.$error.required">Imię jest wymagane</span>
-                            <span ng-show="register.firstName.$touched && register.firstName.$error.minlength">Za krótkie imię</span>
-                            <span ng-show="register.firstName.$touched && register.firstName.$error.maxlength">Za długie imię</span>
-                            <input type="text" class="form-control" ng-model="user.firstName" name="firstName" placeholder="np. Jan..." ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.surname.$invalid && register.surname.$touched }">
-                        <label for="">Wprowadź Nazwisko</label>
-                        <% if (errors && errors.surname) { %>
-                          <span><%= errors.surname.msg %></span>
-                          <% } %>
-                            <span ng-if="register.surname.$touched && register.surname.$error.required">Nazwisko jest wymagane</span>
-                            <span ng-show="register.surname.$touched && register.surname.$error.minlength">Za krótkie nazwisko</span>
-                            <span ng-show="register.surname.$touched && register.surname.$error.maxlength">Za długie nazwisko</span>
-                            <input type="text" class="form-control" ng-model="user.surname" name="surname" placeholder="np. Kowalski..." ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.city.$invalid && register.city.$touched }">
-                        <label for="">Wprowadź Miasto</label>
-                        <% if (errors && errors.city) { %>
-                          <span><%= errors.city.msg %></span>
-                          <% } %>
-                            <span ng-if="register.city.$touched && register.city.$error.required">Miasto jest wymagane</span>
-                            <span ng-show="register.city.$touched && register.city.$error.minlength">Za krótkie miasto</span>
-                            <span ng-show="register.city.$touched && register.city.$error.maxlength">Za długie miasto</span>
-                            <input type="text" class="form-control" ng-model="user.city" name="city" placeholder="np. Jarosław..." ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.country.$invalid && register.country.$touched }">
-                        <label for="">Wprowadź Państwo</label>
-                        <% if (errors && errors.country) { %>
-                          <span><%= errors.country.msg %></span>
-                          <% } %>
-                            <span ng-if="register.country.$touched && register.country.$error.required">Państwo jest wymagane</span>
-                            <span ng-show="register.country.$touched && register.country.$error.minlength">Za krótkie państwo</span>
-                            <span ng-show="register.country.$touched && register.country.$error.maxlength">Za długie państwo</span>
-                            <input type="text" class="form-control" ng-model="user.country" name="country" placeholder="np. Polska..." ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <div class="form-group" class="reg-form" ng-class="{ 'has-error': register.phone.$invalid && register.phone.$touched }">
-                        <label for="">Wprowadź numer telefonu</label>
-                        <% if (errors && errors.phone) { %>
-                          <span><%= errors.phone.msg %></span>
-                          <% } %>
-                            <span ng-if="register.phone.$touched && register.phone.$error.required">Numer telefonu jest wymagany</span>
-                            <span ng-show="register.phone.$touched && register.phone.$error.minlength">Za krótki numer telefonu</span>
-                            <span ng-show="register.phone.$touched && register.phone.$error.maxlength">Za długi numer telefonu</span>
-                            <input type="text" class="form-control" ng-model="user.phone" name="phone" placeholder="np. 667667667" ng-required="true"
-                              ng-minlength="3" ng-maxlength="50">
-                      </div>
-                      <button type="submit" class="btn btn-success pull-right">Zarejestruj się</button>
-                    </form>
-                    <br><br><br>
-
-                    <p class="pull-right">Posiadasz już konto? <a href="/login">Zaloguj się.</a></p>
+            <p class="pull-right">Posiadasz już konto? <a href="/login">Zaloguj się.</a></p>
           </div>
         </div>
       </div>

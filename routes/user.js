@@ -13,8 +13,8 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET LIST appointments */
-router.get('/list-appointments', function (req, res) { 
-  if(req.query.role === 'patient') {
+router.get('/list-appointments', function (req, res) {
+
   Calendar.find({ patientID: req.user._id })
     .then((appointments) => {
       res.json(appointments);
@@ -22,18 +22,7 @@ router.get('/list-appointments', function (req, res) {
     .catch((err) => {
       console.log(err);
     })
-  } else if(req.query.role === 'reception') {
-      Calendar.find()
-    .then((appointments) => {
-      res.json(appointments);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-
 });
-
 
 
 /* GET users listing. */
@@ -53,26 +42,26 @@ router.get('/patient-card', function (req, res) {
 });
 /* GET users listing. */
 
-router.post('/add-registry', function (req, res, next) {
-  var registryObj = req.body.registryObj;
+// router.post('/add-registry', function (req, res, next) {
+//   var registryObj = req.body.registryObj;
 
-  User.findOneAndUpdate({ _id: registryObj._id },
-    {
-      $set: {
-        ['patientCards.' + registryObj.indexCard + '.registry']: registryObj.registry,
-      } 
-    },
-    {
-      upsert: true
-    },
-    ((err, newUser) => {
-      if (err) res.send('errror')
-      else { 
-        res.send(newUser)
-      }
-    })
-  )
-});
+//   User.findOneAndUpdate({ _id: registryObj._id },
+//     {
+//       $set: {
+//         ['patientCards.' + registryObj.indexCard + '.registry']: registryObj.registry,
+//       } 
+//     },
+//     {
+//       upsert: true
+//     },
+//     ((err, newUser) => {
+//       if (err) res.send('errror')
+//       else { 
+//         res.send(newUser)
+//       }
+//     })
+//   )
+// });
 
 
 

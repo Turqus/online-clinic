@@ -96,8 +96,8 @@ mongoose.connect('mongodb://localhost/Clinic', function (error) {
 
     app.use('/', index);
     app.use('/', register);
-    app.use('/user', user);
-    app.use('/calendar', calendarPage);
+    app.use('/user', userAuthenticated, user);
+    app.use('/calendar',calendarAuthenticated, calendarPage);
 
     function calendarAuthenticated(req, res, next) {
       if (req.isAuthenticated()) { 

@@ -188,22 +188,9 @@ router.get('/danuta-antoni/reservation-visit', function (req, res, next) {
 
 //END DOCTORS RESERVATION VISIT
 
-// RECEPTION
-router.get('/timetable', function (req, res, next) {
-  if(req.user && req.user.role === 'reception') {
-     res.render('appointments', { title: 'Wizyty do lekarzy', role : 'reception' });
-  } else {
-    res.redirect('/login');
-  }
-}); 
-
- 
-
-// END RECEPTION
-
 /* GET REGISTER page. */
 router.get('/register', function (req, res) {
-  res.render('register', { title: 'Rejestracja', errors: null })
+  res.render('register', { title: 'Rejestracja' })
 });
 
 
@@ -272,7 +259,7 @@ router.get('/:username', function (req, res, next) {
 // appointments
 router.get('/:username/appointments', function (req, res, next) {
   if(req.user && req.user.role === 'patient') {
-  res.render('appointments', { title: 'Umówione Wizyty', role : 'patient' })
+  res.render('appointments', { title: 'Umówione Wizyty' })
   } else {
     res.redirect('/login');
   }
@@ -280,10 +267,10 @@ router.get('/:username/appointments', function (req, res, next) {
 
 // changing time of appointments
 router.get('/:username/change-appointments/:id', function (req, res, next) {
-  if(req.user && req.user.role === 'patient' || req.user.role === 'reception') {
+  if(req.user && req.user.role === 'patient') {
   Calendar.findById(req.params.id)
-  .then((visit)=>{ 
-    res.render('change-appointments', { title: 'Zmiana Umówionej Wizyty', visit : visit})
+  .then((visit)=>{
+    res.render('change-appointments', { title: 'Zmiana Umówionej Wizyty', visit : visit })
   })
   .catch((err)=>{
     console.log(err)

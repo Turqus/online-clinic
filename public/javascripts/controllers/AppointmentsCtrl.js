@@ -6,8 +6,7 @@
 
     function AppointmentsCtrl($scope, $http) {
 
-        $scope.init = (role) => { 
-            $scope.role = role;
+        $scope.init = () => { 
             $scope.listAppointments();
             $scope.toggle = false;
 
@@ -29,10 +28,11 @@
  
 
         $scope.listAppointments = () => {
+
             $http({
                 method: "GET",
                 url: "/user/list-appointments",
-                params: { role : $scope.role }
+                params: { doctorID: $scope.doctorID }
             }).then(function mySuccess(response) {
                 $scope.list = response.data;
             }, function myError(response) {

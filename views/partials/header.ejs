@@ -45,16 +45,6 @@
                 </li>
                 <li><a href="/user/logout">Wyloguj</a></li>
               </ul>
-              <% }  else if(user.role === 'reception') { %> %>           
-              <ul class="nav navbar-nav navbar-right"> 
-                <li><a href="/timetable">Terminarz</a></li>
-                <li><span>Zalogowany jako:</span>
-                  <a href="/<%= user.username %>">
-                    <%= user.username %>
-                  </a>
-                </li>
-                <li><a href="/user/logout">Wyloguj</a></li>
-              </ul>
               <% } %>
 
 

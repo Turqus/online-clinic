@@ -4,10 +4,12 @@
     angular.module('app')
         .controller('ChangeAppoinmentsCtrl', ChangeAppoinmentsCtrl);
 
-    function ChangeAppoinmentsCtrl($scope, $http ) {
+    function ChangeAppoinmentsCtrl($scope, $http) {
 
-        $scope.init = (visit) => { 
-            $scope.visit = visit;   
+        $scope.init = (visit) => {
+            $scope.visit = visit;
+            console.log($scope.visit)
+
             $scope.hoursOfAdmission = [
                 { "from": "8:00" },
                 { "from": "8:30" },
@@ -86,7 +88,8 @@
         //         console.log(response)
         //     });
         // }
- 
+
+
         $scope.bookVisit = (dateVisit) => {
             $scope.error = {};
             $scope.error.ok = true;
@@ -104,11 +107,8 @@
 
                 var hour = dateVisit.timeOfTheVisit;
 
-                
 
                 let calendarObj = {
-                    visitPatientName : $scope.visit.patient,
-                    visitPatientId : $scope.visit.patientID,
                     idOfAnEarlierVisit: $scope.visit._id,
                     _id: $scope.visit.doctorID,
                     doctorName: $scope.visit.doctor,

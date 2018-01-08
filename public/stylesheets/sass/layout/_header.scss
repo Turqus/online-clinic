@@ -59,6 +59,7 @@ nav {
 
 .nav-control {
   ul {
+      height: 60px;
       margin-top: 10px;
  
       li {
@@ -120,14 +121,7 @@ nav {
     }   
 }
 
-@media  (max-width: 991px) {  
-  .navbar-nav {
-    li {
-      a {
-        font-size: 13px; 
-      }
-    }
-  }
+@media only screen and (max-width: 600px){
   .nav {
     li {
       font-size: 11px;

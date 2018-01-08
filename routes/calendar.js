@@ -82,8 +82,8 @@ router.post('/change-a-date', (req, res) => {
             dd: calendarObj.date.dd,
             hour: calendarObj.date.hour,
             reserved: true,
-            patient: calendarObj.visitPatientName,
-            patientID: calendarObj.visitPatientId
+            patient: req.user.firstName + ' ' + req.user.surname,
+            patientID: req.user._id
           }
 
           var calendar = new Calendar(newVisit);

@@ -36,7 +36,7 @@
                     <div id="profile" class="tab-pane fade in active">
 
                       <div class="row">
-                        <div class="col-md-4 col-xs-9 col-sm-7 center-block personalDataForm">
+                        <div class="col-md-4 center-block personalDataForm">
                           <form name="profile" class="validateInfo" action="/user/change-personal-data" method="post" novalidate>
 
 
@@ -105,10 +105,10 @@
 
                     </div>
 
-                    <div id="changePassword" class="tab-pane col-md-4 col-xs-9 col-sm-7 center-block">
+                    <div id="changePassword" class="tab-pane">
 
                       <div class="row">
-                        <div class="personalDataForm">
+                        <div class="col-md-4 center-block personalDataForm">
                           <form name="pass" class="validateInfo" action="/user/change-password" method="post" novalidate>
 
 
@@ -153,9 +153,9 @@
 
                     </div>
 
-                    <div id="changeEmail" class="tab-pane col-md-12 col-xs-9 col-sm-12 center-block">
+                    <div id="changeEmail" class="tab-pane">
                       <div class="row">
-                        <div class="col-md-4 col-xs-9 col-sm-7 center-block personalDataForm">
+                        <div class="col-md-4 center-block personalDataForm">
                           <div class="actualEmail">
                             <h4>Twój aktualny adres e-mail: </h4>
                             <p>
@@ -164,21 +164,21 @@
                           </div>
 
 
- 
-            <form name="emailForm" class="validateInfo" action="/user/change-email" method="post" novalidate>
 
-              <h4 ng-show="info" class="info">{{info}}</h4>
-              <div class="form-group" ng-class="{ 'has-error': emailForm.email.$invalid && emailForm.email.$touched }">
-                <label for="">Wprowadź nowy adres e-mail</label>
-                <% if (errorsEmail && errorsEmail.email) { %>
-                  <span><%= errorsEmail.email.msg %></span>
-                  <% } %>
-                    <span ng-if="emailForm.email.$touched && emailForm.email.$error.required">Pole jest wymagane</span>
-                    <span ng-show="emailForm.email.$touched && emailForm.email.$error.email">Adres e-mail nie jest poprawny</span>
-                    <input type="email" class="form-control" ng-model="email" placeholder="Wprowadź nowy adres e-mail..." name="email" ng-required="true">
-              </div>
-              <button class="btn btn-success pull-right" ng-disabled="emailForm.$invalid" type="submit">Wyślij</button>
-            </form> 
+                          <form name="emailForm" class="validateInfo" action="/user/change-email" method="post" novalidate>
+
+                            <h4 ng-show="info" class="info">{{info}}</h4>
+                            <div class="form-group" ng-class="{ 'has-error': emailForm.email.$invalid && emailForm.email.$touched }">
+                              <label for="">Wprowadź nowy adres e-mail</label>
+                              <% if (errorsEmail && errorsEmail.email) { %>
+                                <span><%= errorsEmail.email.msg %></span>
+                                <% } %>
+                                  <span ng-if="emailForm.email.$touched && emailForm.email.$error.required">Pole jest wymagane</span>
+                                  <span ng-show="emailForm.email.$touched && emailForm.email.$error.email">Adres e-mail nie jest poprawny</span>
+                                  <input type="email" class="form-control" ng-model="email" placeholder="Wprowadź nowy adres e-mail..." name="email" ng-required="true">
+                            </div>
+                            <button class="btn btn-success pull-right" ng-disabled="emailForm.$invalid" type="submit">Wyślij</button>
+                          </form>
                         </div>
                       </div>
 

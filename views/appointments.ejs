@@ -1,12 +1,12 @@
 <% include partials/head.ejs %>
   <% include partials/header.ejs %>
 
-    <div class="container" ng-app="app" ng-controller="AppointmentsCtrl" ng-init="init(<%= JSON.stringify(role) %>)">
+    <div class="container" ng-app="app" ng-controller="AppointmentsCtrl" ng-init="init()">
       <div class="row">
         <% include partials/menu.ejs %>
 
           <div class="col-md-9 news"> 
-            <h3>Wizyty</h3>
+            <h3>Zabiegi</h3>
             <hr class="hidden-sm hidden-xs">
             <div>
               <div class="row">
