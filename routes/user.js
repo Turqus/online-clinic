@@ -14,9 +14,7 @@ var Calendar = require('../model/calendar.model');
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
-
-
-
+ 
 
 
 /* GET LIST appointments */
@@ -83,12 +81,6 @@ router.post('/add-registry', function (req, res, next) {
 });
 
 
-
-
-
-
-
-
 // CHANGE DATA 
 
 router.post('/change-personal-data', function (req, res, next) {
@@ -111,9 +103,6 @@ router.post('/change-personal-data', function (req, res, next) {
   req.check('country', 'Za długie państwo.').isLength({ max: 50 });
   req.check('phone', 'Za długi numer telefonu.').isLength({ max: 50 });
 
-
-  // req.check('email', 'Email is required').isEmail();
-  // req.check('password', 'Password is required').isLength({ min: 4 }).equals(req.body.confirmPassword); 
   var errors = req.validationErrors(true);
 
   if (errors) {
@@ -178,7 +167,7 @@ router.post('/change-password', function (req, res, next) {
         User.findOneAndUpdate({ _id: req.user._id },
           {
             $set: {
-              password : hash
+              password: hash
             }
           },
           {

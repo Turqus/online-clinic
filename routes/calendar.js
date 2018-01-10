@@ -6,8 +6,6 @@ var User = require('../model/user.model');
 var Calendar = require('../model/calendar.model');
 
 
-
-
 //RESERVATE visit
 router.post('/book-a-date', (req, res) => {
   var calendarObj = req.body.calendarObj;
@@ -104,76 +102,10 @@ router.post('/change-a-date', (req, res) => {
     })
 
 });
-
-
-
-
-// router.get('/list-of-dates', (req, res) => {
-
-//   Calendar.find({ doctorID: ObjectID('5a31392cc99fe923c0810096') })
-//     .then((calendars) => {
-//       console.log(calendars)
-//       res.send(calendars)
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-
-// });
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 module.exports = router;
 
 
 
 
-
-
-
-        // Calendar.findOneAndUpdate({ doctorID: req.body.calendarObj._id },
-        //   {
-        //     $set: {
-        //       calendar: req.body.calendarObj.calendar,
-        //     }
-        //   },
-        //   {
-        //     upsert: true
-        //   },
-        //   ((err, newCalendar) => {
-        //     if (err) res.send('errror')
-        //     else {
-        //       res.send(newCalendar)
-        //     }
-        //   })
-        // )
-
-
-
-
-        //         // ----
-        // Calendar.findOneAndUpdate({ doctorID: req.body.calendarObj._id },
-        //   { 
-        //     // $push: { time: { hour : calendarObj.date.hour, reserved: true, patient: 'patient'  } } 
-        //      $addToSet: { time: { hour : calendarObj.date.hour, reserved: true, patient: 'patient'  } }
-        //   },
-        //   {
-        //     upsert: true
-        //   },
-        //   ((err, newCalendar) => {
-        //     if (err) res.send('errror')
-        //     else {
-        //       res.send(newCalendar)
-        //     }
-        //   })
-        // )
-        // // ----
+ 
