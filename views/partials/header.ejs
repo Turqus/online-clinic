@@ -3,8 +3,10 @@
   <div class="top-bar">
     <div class="top-bar-wrapper">
       <div class="top-bar-contact">
-        <span class="top-bar__item">Telefon Kontaktowy:</span> <span>143134134</span>
-        <span class="top-bar__item">Email:</span><span>przychodnia@o2.pl</span>
+        <span class="top-bar__item">Telefon Kontaktowy:</span>
+        <span>143134134</span>
+        <span class="top-bar__item">Email:</span>
+        <span>przychodnia@o2.pl</span>
       </div>
     </div>
   </div>
@@ -12,7 +14,7 @@
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class=" nav-control"  >
+      <div class=" nav-control">
         <ul class="nav navbar-nav   hidden-xs">
           <li class="nav-info">
             <a href="/">Przychodnia Online</a>
@@ -21,31 +23,63 @@
 
         <% if (!user) { %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/register">Zarejestruj się</a></li>
-            <li><a href="/login">Zaloguj</a></li>
+            <li>
+              <a href="/register">Zarejestruj się</a>
+            </li>
+            <li>
+              <a href="/login">Zaloguj</a>
+            </li>
           </ul>
           <% } else if(user.role === 'patient') { %>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/<%= user.username %>/appointments">Umówione Wizyty</a></li>
-              <li><a href="/patient-card">Karta Pacjenta</a></li>
-              <li> <span class="hidden-sm hidden-xs">Zalogowany jako:</span>
+              <li>
+                <a href="/<%= user.username %>/appointments">Umówione Wizyty</a>
+              </li>
+              <li>
+                <a href="/patient-card">Karta Pacjenta</a>
+              </li>
+              <li>
+                <span class="hidden-sm hidden-xs">Zalogowany jako:</span>
                 <a href="/<%= user.username %>">
-                <span class="visible-xs-12 hidden-md hidden-lg">Zalogowany: </span> <%= user.username %>
+                  <span class="visible-xs-12 hidden-md hidden-lg">Zalogowany: </span>
+                  <%= user.username %>
                 </a>
               </li>
-                <li><a href="/user/logout">Wyloguj</a></li>
+              <li>
+                <a href="/user/logout">Wyloguj</a>
+              </li>
             </ul>
             <% } else if(user.role === 'doctor') { %>
-              <ul class="nav navbar-nav navbar-right"> 
-                <li><a href="/find-patient">Szukaj Pacjenta</a></li>
-                <li><span>Zalogowany jako:</span>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="/find-patient">Szukaj Pacjenta</a>
+                </li>
+                <li>
+                  <span>Zalogowany jako:</span>
                   <a href="/<%= user.username %>">
                     <%= user.username %>
                   </a>
                 </li>
-                <li><a href="/user/logout">Wyloguj</a></li>
+                <li>
+                  <a href="/user/logout">Wyloguj</a>
+                </li>
               </ul>
-              <% } %>
+              <% } else if(user.role === 'reception') { %>
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="/reception/visits-to-the-doctor">Wizyty u Lekarza</a>
+                  </li>
+                  <li>
+                    <span>Zalogowany jako:</span>
+                    <a href="/<%= user.username %>">
+                      <%= user.username %>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/user/logout">Wyloguj</a>
+                  </li>
+                </ul>
+                <% } %>
 
 
       </div>

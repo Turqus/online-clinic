@@ -1,10 +1,8 @@
 <% include partials/head.ejs %>
   <% include partials/header.ejs %>
-
     <div class="container" ng-app="app" ng-controller="AppointmentsCtrl" ng-init="init()">
       <div class="row">
         <% include partials/menu.ejs %>
-
           <div class="col-md-9 news">
             <h3>Zabiegi</h3>
             <hr class="hidden-sm hidden-xs">
@@ -14,7 +12,6 @@
                   <h4>Informacje o Wizytach</h4>
                 </div>
               </div>
-
               <div class="table-responsive">
                 <table class="table table-hover">
                   <tr>
@@ -37,12 +34,10 @@
                   </tr>
                 </table>
               </div>
-
             </div>
           </div>
       </div>
     </div>
-
     <% include partials/footer.ejs %>
       <script src="/javascripts/controllers/AppointmentsCtrl.js"></script>
       <script src="/javascripts/controllers/MenuCtrl.js"></script>

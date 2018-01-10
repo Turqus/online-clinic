@@ -162,7 +162,7 @@ router.get('/danuta-antoni', function (req, res, next) {
 //DOCTORS  RESERVATION VISIT
 router.get('/marek-antoni/reservation-visit', function (req, res, next) {
   if(req.user) {
-    res.render('reservation-visit', { title: 'Rezerwacja Wizyty', doctorID : '5a3534cc0e08ab18988edab9', doctorName : 'Marek Antoni' });
+    res.render('reservation-visit', { title: 'Rezerwacja Wizyty', doctorID : '5a54b2997ae86414d86b598a', doctorName : 'Marek Antoni' });
   } else {
     res.redirect('/login');
   }
@@ -235,6 +235,10 @@ router.get('/occupational-medicine', function (req, res) {
 
 //END CLINICS
 
+//visits-to-the-doctor
+router.get('/reception/visits-to-the-doctor', (req, res)=>{ 
+  res.render('visits-to-the-doctor', { title: 'Umówione Wizyty' })
+});
 
 
 // PROFIL USER
@@ -267,7 +271,7 @@ router.get('/:username/appointments', function (req, res, next) {
 
 // changing time of appointments
 router.get('/:username/change-appointments/:id', function (req, res, next) {
-  if(req.user && req.user.role === 'patient') {
+  if(req.user && req.user.role === 'patient' || req.user.role === 'reception') {
   Calendar.findById(req.params.id)
   .then((visit)=>{
     res.render('change-appointments', { title: 'Zmiana Umówionej Wizyty', visit : visit })

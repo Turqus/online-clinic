@@ -1,35 +1,28 @@
-body {  
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
- 
+
 #home {
   width: 100%;
 }
 
-
 .news {
   text-align: center;
-    h3 {
+
+  h3 {
     @extend %underline;
   }
-} 
+}
 
-.our-team { 
+.our-team {
   @extend .news;
 
   &-image {
     margin-top: 30px;
-    
+
     img {
       max-height: 200px;
       margin: auto;
     }
   }
 }
-
- 
-
-
-
- 
-

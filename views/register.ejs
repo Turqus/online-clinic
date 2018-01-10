@@ -1,15 +1,16 @@
 <% include partials/head.ejs %>
-  <!--topbar-->
   <div class="top-bar">
     <div class="top-bar-wrapper">
       <div class="top-bar-contact">
-        <span class="top-bar__item">Telefon Kontaktowy:</span> <span>143134134</span>
-        <span class="top-bar__item">Email:</span><span>przychodnia@o2.pl</span>
+        <span class="top-bar__item">Telefon Kontaktowy:</span>
+        <span>143134134</span>
+        <span class="top-bar__item">Email:</span>
+        <span>przychodnia@o2.pl</span>
       </div>
     </div>
   </div>
 
-  <div class="container" ng-app="app" ng-controller="RegisterCtrl">
+  <div class="container" ng-app="app">
     <section id="register">
       <div class="register-wrapper">
 
@@ -93,19 +94,20 @@
               </div>
               <button type="submit" class="btn btn-success pull-right" ng-disabled="register.$invalid">Zarejestruj się</button>
             </form>
-            <br><br><br>
+            <br>
+            <br>
+            <br>
 
-            <p class="pull-right">Posiadasz już konto? <a href="/login">Zaloguj się.</a></p>
+            <p class="pull-right">Posiadasz już konto?
+              <a href="/login">Zaloguj się.</a>
+            </p>
           </div>
         </div>
       </div>
     </section>
   </div>
 
-
-
   <% include partials/footer.ejs %>
-    <script src="javascripts/controllers/RegisterCtrl.js"></script>
     </body>
 
     </html>

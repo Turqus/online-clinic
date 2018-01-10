@@ -6,16 +6,16 @@
       <div class="row">
         <% include partials/menu.ejs %>
 
-          <div class="col-md-9 news"> 
-            <h3>Karta Pacjenta</h3> 
+          <div class="col-md-9 news">
+            <h3>Karta Pacjenta</h3>
             <hr class="hidden-sm hidden-xs">
             <div>
               <div class="row">
                 <div class="col-md-12">
                   Proszę wybrać kartę pacjenta :
                   <select ng-model="card" ng-change="changeCard(card)">
-                  <option value="{{$index}}" ng-repeat="card in patient.patientCards">{{card.name}}</option>
-                </select>
+                    <option value="{{$index}}" ng-repeat="card in patient.patientCards">{{card.name}}</option>
+                  </select>
                 </div>
               </div>
 
@@ -29,7 +29,7 @@
                       <span ng-show="addRegistration.registration.$touched && addRegistration.registration.$error.minlength">Za krótki tytuł</span>
                       <span ng-show="addRegistration.registration.$touched && addRegistration.registration.$error.maxlength">Za długi tytuł</span>
                       <textarea cols="30" rows="5" ng-model="registry" class="form-control" name="registration" ng-required="true" minlength="1"
-                        maxlength="500"></textarea> 
+                        maxlength="500"></textarea>
                     </form-group>
                     <button class="btn btn-success pull-right" ng-click="addRegistry(registry)" ng-disabled="addRegistration.$invalid">Dodaj wpis</button>
                   </form>
@@ -45,7 +45,9 @@
                     <div class="panel-heading">
                       <!--panel heading-->
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#{{$index}}">{{$index + 1}}. Informacja wystawiona przez <b> {{item.doctor}}</b> </a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#{{$index}}">{{$index + 1}}. Informacja wystawiona przez
+                          <b> {{item.doctor}}</b>
+                        </a>
                       </h4>
                       <!--/panel heading-->
                     </div>
@@ -65,7 +67,7 @@
                   <!--/akordeon-->
                 </div>
               </div>
-              
+
             </div>
           </div>
       </div>

@@ -20,9 +20,21 @@ var User = require('../model/user.model');
 
 
 router.post('/registerUser', function (req, res, next) {
-  req.check('username', 'Login is required').notEmpty();
-  req.check('email', 'Email is required').isEmail();
-  req.check('password', 'Password is required').isLength({ min: 4 }).equals(req.body.confirmPassword);
+  req.check('username', 'Login jest wymagany').notEmpty();
+  req.check('email', 'Email jest wymagany').isEmail();
+  req.check('password', 'Hasło jest wymagane').isLength({ min: 4 }).equals(req.body.confirmPassword);
+
+ 
+  req.check('password', 'Hasło nie pasuje do siebie.').equals(req.body.confirmPassword); 
+
+  req.check('password', 'Hasło jest wymagane.').notEmpty();
+  req.check('password', 'Za krótkie hasło.').isLength({ min: 5 });
+  req.check('password', 'Za długie hasło.').isLength({ max: 50 });
+
+  req.check('confirmPassword', 'Powtórz hasło.').notEmpty();
+  req.check('confirmPassword', 'Za krótkie hasło.').isLength({ min: 5 });
+  req.check('confirmPassword', 'Za długie hasło.').isLength({ max: 50 });
+ 
 
   var errors = req.validationErrors();
 
@@ -32,11 +44,11 @@ router.post('/registerUser', function (req, res, next) {
     email: req.body.email,
     role: 'patient',
 
-    firstName: null,
-    surname: null,
-    city: null,
-    country: null,
-    phone: null,
+    firstName: req.body.firstName,
+    surname: req.body.surname,
+    city: req.body.city,
+    country: req.body.country,
+    phone: req.body.phone,
 
     patientCards: [{
       name: 'Poradnia Chirurgi Ogólnej',
@@ -50,9 +62,9 @@ router.post('/registerUser', function (req, res, next) {
     }]
   }
  
-  if (errors) {
-    res.render('index', {
-      errors: errors, error_msg : 'Rejestracja nieudana.'
+  if (errors) { 
+    res.render('register', {
+      errors: errors, error_msg : 'Rejestracja nieudana.', title : 'Rejestracja'
     });
   } else {
     bcrypt.hash(newUser.password, saltRounds, function (err, hash) {

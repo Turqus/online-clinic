@@ -1,18 +1,12 @@
-
 (function () {
-
     angular.module('app')
         .controller('BookVisitCtrl', BookVisitCtrl);
 
     function BookVisitCtrl($scope, $http) {
 
         $scope.init = (doctorID, doctorName) => {
- 
-
             $scope.doctorID = doctorID;
             $scope.doctorName = doctorName;
-            // console.log(doctorID)
-            // $scope.checkingDeadlines();
 
             $scope.hoursOfAdmission = [
                 { "from": "8:00" },
@@ -40,7 +34,7 @@
 
             yyyy = today.getFullYear();
             dd = today.getDate();
-            mm = today.getMonth() + 1;
+            mm = today.getMonth() + 2;
 
             if (mm == 12) {
                 yyyy = yyyy + 1;
@@ -49,59 +43,10 @@
 
             $scope.dateTo = yyyy + '-' + mm + '-' + dd;
 
-
-
             function daysInMonth(month, year) {
                 return new Date(year, month, 0).getDate();
             }
-
-
-            // $scope.doctorName = doctorName;
-            // $scope.patient = JSON.parse(patient);
-            // $scope.card = '0';
-            // $scope.changeCard(0);
         }
-
- 
-
-
-
-
-        // $scope.findPatient = (patientName) => {
-        //     var params = {};
-        //     params.name = patientName;
-
-        //     $http({
-        //         method: "GET",
-        //         url: "/find",
-        //         params: params
-        //     }).then(function mySuccess(response) {
-        //         $scope.finededPatient = response.data;
-        //     }, function myError(response) {
-        //         console.log(response);
-        //     });
-        // }
-
-
-
-        // ----
-
-
-        // $scope.checkingDeadlines = () => {
-
-        //     $http({
-        //         method: "GET",
-        //         url: "/calendar/list-of-dates",
-        //         params: { doctorID: $scope.doctorID }
-        //     }).then(function mySuccess(response) {
-        //         $scope.calendar = response.data[0];
-        //         console.log($scope.calendar)
-        //     }, function myError(response) {
-        //         console.log(response)
-        //     });
-        // }
-
-
 
         $scope.bookVisit = (dateVisit) => {
             $scope.error = {};
@@ -119,7 +64,6 @@
                 var yyyy = date.getFullYear();
 
                 var hour = dateVisit.timeOfTheVisit;
-
 
                 let calendarObj = {
                     _id: $scope.doctorID,
@@ -156,13 +100,5 @@
             }
         }
     }
-
 })();
 
-
-
-            // var filtered = $scope.calendar.calendar.filter((item, index) => {
-            //     console.log(item.day.dd == dd && item.day.mm == mm && item.day.yyyy == yyyy)
-            // }) 
-
-            // $scope.calendar.calendar.push( {day : { yyyy : yyyy, mm : mm, dd : dd, time : [{hour : hour, reserved : true, patient : 'Bartlomiej'}]  }}); 

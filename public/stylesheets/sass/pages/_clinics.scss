@@ -1,52 +1,52 @@
-.picture { 
-    img {
-         margin: auto;
-         max-width: 300px;
-    }
+.picture {
+  img {
+    margin: auto;
+    max-width: 300px;
+  }
 }
 
 .info-name {
-    margin: 30px 0 30px 0;
+  margin: 30px 0;
 }
 
 .info-bottom {
-    margin-top: 50px;
+  margin-top: 50px;
 
-    button {
-        margin-left: 5px;
-    }
+  button {
+    margin-left: 5px;
+  }
 
-    a {
-        color: white;
-    }
+  a {
+    color: white;
+  }
 }
 
 .doctor-info-bottom {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
- 
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: white;
+  }
+}
+@media only screen and (max-width : 400px) {
+  .doctor-info-bottom {
+    display: block;
 
     a {
-        color: white;
+      width: 100%;
+      margin-top: 10px;
     }
-}
+  }
 
+  .info-bottom {
+    display: block;
 
-@media only screen and (max-width : 400px) {
-    .doctor-info-bottom {
-        display: block;
-        a {
-            width: 100%;
-            margin-top: 10px;
-        }
+    a {
+      width: 100%;
+      margin-top: 10px;
+
     }
-    .info-bottom {
-            display: block;
-        a {
-            width: 100%;
-            margin-top: 10px;
-
-        }
-    }
+  }
 }

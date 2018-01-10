@@ -9,8 +9,7 @@
         </div>
       </div>
 
-      <div class="row" ng-controller="ProfileCtrl" ng-init="init(<%= JSON.stringify(user) %>)">
-        
+      <div class="row" ng-init="init(<%= JSON.stringify(user) %>)">
         <% if (success_msg.length > 0) { %>
           <div class="alert alert-success">
             <%= success_msg %>
@@ -24,27 +23,30 @@
               <% } %>
 
                 <div class="col-md-12">
-                  <!--test-->
                   <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="/#profile" class="btn btn-default">Zmień dane</a></li>
-                    <li><a data-toggle="tab" href="/#changePassword" class="btn btn-default">Zmiań hasło</a></li>
-                    <li><a data-toggle="tab" href="/#changeEmail" class="btn btn-default">Zmiań e-mail</a></li>
+                    <li class="active">
+                      <a data-toggle="tab" href="/#profile" class="btn btn-default">Zmień dane</a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="/#changePassword" class="btn btn-default">Zmiań hasło</a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="/#changeEmail" class="btn btn-default">Zmiań e-mail</a>
+                    </li>
                   </ul>
-
 
                   <div class="tab-content">
                     <div id="profile" class="tab-pane fade in active">
-
                       <div class="row">
                         <div class="col-md-4 center-block personalDataForm">
                           <form name="profile" class="validateInfo" action="/user/change-personal-data" method="post" novalidate>
-
-
                             <h4 ng-show="info" class="info">{{info}}</h4>
                             <div class="form-group" ng-class="{ 'has-error': profile.firstName.$invalid && profile.firstName.$touched }">
                               <label>Zmień imię:</label>
                               <% if (errors && errors.firstName != null) { %>
-                                <span><%= errors.firstName.msg %></span>
+                                <span>
+                                  <%= errors.firstName.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="profile.firstName.$touched && profile.firstName.$error.required">Pole jest wymagane</span>
                                   <span ng-show="profile.firstName.$touched && profile.firstName.$error.minlength">Za krótkie imię</span>
@@ -55,7 +57,9 @@
                             <div class="form-group" ng-class="{ 'has-error': profile.surname.$invalid && profile.surname.$touched }">
                               <label>Zmień nazwisko:</label>
                               <% if (errors && errors.surname) { %>
-                                <span><%= errors.surname.msg %></span>
+                                <span>
+                                  <%= errors.surname.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="profile.surname.$touched && profile.surname.$error.required">Pole jest wymagane</span>
                                   <span ng-show="profile.surname.$touched && profile.surname.$error.minlength">Za krótkie nazwisko</span>
@@ -66,7 +70,9 @@
                             <div class="form-group" ng-class="{ 'has-error': profile.city.$invalid && profile.city.$touched }">
                               <label>Zmień miasto:</label>
                               <% if (errors && errors.city) { %>
-                                <span><%= errors.city.msg %></span>
+                                <span>
+                                  <%= errors.city.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="profile.city.$touched && profile.city.$error.required">Pole jest wymagane</span>
                                   <span ng-show="profile.city.$touched && profile.city.$error.minlength">Za krótka nazwa miasta</span>
@@ -77,7 +83,9 @@
                             <div class="form-group" ng-class="{ 'has-error': profile.country.$invalid && profile.country.$touched }">
                               <label>Zmień państwo:</label>
                               <% if (errors && errors.country) { %>
-                                <span><%= errors.country.msg %></span>
+                                <span>
+                                  <%= errors.country.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="profile.country.$touched && profile.country.$error.required">Pole jest wymagane</span>
                                   <span ng-show="profile.country.$touched && profile.country.$error.minlength">Za krótka nazwa państwa</span>
@@ -88,7 +96,9 @@
                             <div class="form-group" ng-class="{ 'has-error': profile.phone.$invalid && profile.phone.$touched }">
                               <label>Zmień numer telefonu:</label>
                               <% if (errors && errors.phone) { %>
-                                <span><%= errors.phone.msg %></span>
+                                <span>
+                                  <%= errors.phone.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="profile.phone.$touched && profile.phone.$error.required">Pole jest wymagane</span>
                                   <span ng-show="profile.phone.$touched && profile.phone.$error.minlength">Za krótki numer telefonu</span>
@@ -110,24 +120,26 @@
                       <div class="row">
                         <div class="col-md-4 center-block personalDataForm">
                           <form name="pass" class="validateInfo" action="/user/change-password" method="post" novalidate>
-
-
                             <h4 ng-show="info" class="info">{{info}}</h4>
                             <div class="form-group" ng-class="{ 'has-error': pass.oldpassword.$invalid && pass.oldpassword.$touched }">
                               <label>Wpisz stare hasło: </label>
                               <% if (errorsPass && errorsPass.oldpassword) { %>
-                                <span><%= errorsPass.oldpassword.msg %></span>
+                                <span>
+                                  <%= errorsPass.oldpassword.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="pass.oldpassword.$touched && pass.oldpassword.$error.required">Pole jest wymagane</span>
                                   <span ng-show="pass.oldpassword.$touched && pass.oldpassword.$error.minlength">Za krótkie hasło</span>
                                   <span ng-show="pass.oldpassword.$touched && pass.oldpassword.$error.maxlength">Za długie hasło</span>
-                                  <input type="text" ng-model="passw.oldpassword" name="oldpassword" class="form-control" ng-required="true" ng-minlength="6"
+                                  <input type="text" ng-model="passw.oldpassword" name="oldpassword" class="form-control" ng-required="true" ng-minlength="5"
                                     ng-maxlength="50" placeholder="Wprowadź stare hasło...">
                             </div>
                             <div class="form-group" ng-class="{ 'has-error': pass.password.$invalid && pass.password.$touched }">
                               <label>Wpisz Nowe hasło: </label>
                               <% if (errorsPass && errorsPass.password) { %>
-                                <span><%= errorsPass.password.msg %></span>
+                                <span>
+                                  <%= errorsPass.password.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="pass.password.$touched && pass.password.$error.required">Pole jest wymagane</span>
                                   <span ng-show="pass.password.$touched && pass.password.$error.minlength">Za krótkie hasło</span>
@@ -138,7 +150,9 @@
                             <div class="form-group" ng-class="{ 'has-error': pass.confirmPassword.$invalid && pass.confirmPassword.$touched }">
                               <label>Powtórz nowe hasło: </label>
                               <% if (errorsPass && errorsPass.confirmPassword) { %>
-                                <span><%= errorsPass.confirmPassword.msg %></span>
+                                <span>
+                                  <%= errorsPass.confirmPassword.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="pass.confirmPassword.$touched && pass.confirmPassword.$error.required">Pole jest wymagane</span>
                                   <span ng-show="pass.confirmPassword.$touched && pass.confirmPassword.$error.minlength">Za krótkie hasło</span>
@@ -150,7 +164,6 @@
                           </form>
                         </div>
                       </div>
-
                     </div>
 
                     <div id="changeEmail" class="tab-pane">
@@ -163,15 +176,14 @@
                             </p>
                           </div>
 
-
-
                           <form name="emailForm" class="validateInfo" action="/user/change-email" method="post" novalidate>
-
                             <h4 ng-show="info" class="info">{{info}}</h4>
                             <div class="form-group" ng-class="{ 'has-error': emailForm.email.$invalid && emailForm.email.$touched }">
                               <label for="">Wprowadź nowy adres e-mail</label>
                               <% if (errorsEmail && errorsEmail.email) { %>
-                                <span><%= errorsEmail.email.msg %></span>
+                                <span>
+                                  <%= errorsEmail.email.msg %>
+                                </span>
                                 <% } %>
                                   <span ng-if="emailForm.email.$touched && emailForm.email.$error.required">Pole jest wymagane</span>
                                   <span ng-show="emailForm.email.$touched && emailForm.email.$error.email">Adres e-mail nie jest poprawny</span>
@@ -181,13 +193,9 @@
                           </form>
                         </div>
                       </div>
-
                     </div>
-                    <!---->
-
                   </div>
                   <hr>
-                  <!--test//-->
                 </div>
       </div>
 
@@ -199,7 +207,6 @@
 
     <% include partials/footer.ejs %>
       <script src="/javascripts/controllers/MenuCtrl.js"></script>
-      <script src="/javascripts/controllers/ProfileCtrl.js"></script>
       </body>
 
       </html>

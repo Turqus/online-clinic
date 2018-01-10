@@ -5,13 +5,13 @@
       <div class="row">
         <% include partials/menu.ejs %>
 
-          <div class="col-md-9 news"> 
+          <div class="col-md-9 news">
             <h3>Karta Pacjenta</h3>
             <hr class="hidden-sm hidden-xs">
             <div>
 
               <div class="row">
-                <div class="col-md-12"> 
+                <div class="col-md-12">
                   <form>
                     <label for="">Znajdź Pacjenta</label>
                     <input type="text" class="form-control" ng-model="patientName" ng-change="findPatient(patientName, doctorName)">
@@ -42,7 +42,9 @@
                       <td> {{patient.country}} </td>
                       <td> {{patient.phone}} </td>
                       <td> {{patient.email}} </td>
-                      <td> <a href="/find-patient/{{patient._id}}" class="btn btn-warning">Profil Pacjenta</a> </td>
+                      <td>
+                        <a href="/find-patient/{{patient._id}}" class="btn btn-warning">Profil Pacjenta</a>
+                      </td>
                     </tr>
                   </table>
 
@@ -56,9 +58,9 @@
       </div>
     </div>
 
-    <% include partials/footer.ejs %> 
-    <script src="/javascripts/controllers/MenuCtrl.js"></script> 
-    <script src="/javascripts/controllers/FindPatientCtrl.js"></script> 
+    <% include partials/footer.ejs %>
+      <script src="/javascripts/controllers/MenuCtrl.js"></script>
+      <script src="/javascripts/controllers/FindPatientCtrl.js"></script>
       </body>
 
       </html>

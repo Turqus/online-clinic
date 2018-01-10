@@ -38,7 +38,7 @@
 
             yyyy = today.getFullYear();
             dd = today.getDate();
-            mm = today.getMonth() + 1;
+            mm = today.getMonth() + 2; 
 
             if (mm == 12) {
                 yyyy = yyyy + 1;
@@ -47,50 +47,18 @@
 
             $scope.dateTo = yyyy + '-' + mm + '-' + dd;
 
+            console.log($scope.dateFrom)
+            console.log($scope.dateTo)
 
 
             function daysInMonth(month, year) {
                 return new Date(year, month, 0).getDate();
             }
-
-
-
         }
 
-        $scope.toggle = false;
+        $scope.toggle = false; 
 
-        $scope.expandMenu = (name) => {
-
-            if ($scope.toggle == true && $scope.currentlyMenu == name) {
-                $scope.toggle = !$scope.toggle;
-            } else {
-                $scope.toggle = true;
-            }
-
-            $scope.currentlyMenu = name;
-        }
-
-
-
-
-
-
-        // $scope.checkingDeadlines = () => {
-
-        //     $http({
-        //         method: "GET",
-        //         url: "/calendar/list-of-dates",
-        //          params: {doctorID : $scope.doctorID}
-        //     }).then(function mySuccess(response) { 
-        //         $scope.calendar = response.data[0]; 
-        //         console.log($scope.calendar)
-        //     }, function myError(response) {
-        //         console.log(response)
-        //     });
-        // }
-
-
-        $scope.bookVisit = (dateVisit) => {
+        $scope.changeBookVisit = (dateVisit) => {
             $scope.error = {};
             $scope.error.ok = true;
 
@@ -107,13 +75,15 @@
 
                 var hour = dateVisit.timeOfTheVisit;
 
-
                 let calendarObj = {
-                    idOfAnEarlierVisit: $scope.visit._id,
-                    _id: $scope.visit.doctorID,
-                    doctorName: $scope.visit.doctor,
-                    date: { dd: dd, mm: mm, yyyy: yyyy, hour: hour }
+                    idOfAnEarlierVisit : $scope.visit._id,
+                    _id : $scope.visit.doctorID,
+                    doctorName : $scope.visit.doctor,
+                    date: { dd: dd, mm: mm, yyyy: yyyy, hour: hour },
+                    patient : $scope.visit.patient,
+                    patientID : $scope.visit.patientID
                 };
+  
 
                 $http({
                     method: 'POST',

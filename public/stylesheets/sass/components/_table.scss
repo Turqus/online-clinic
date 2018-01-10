@@ -1,29 +1,25 @@
-.table { 
-    
-    tr {    
-        
-        th {
-            text-align: center;
-        }
-        td:nth-child(2) { 
-            word-wrap: break-word;
-        }
+.table {
+  tr {
+    th {
+      text-align: center;
     }
+
+    td:nth-child(2) {
+      word-wrap: break-word;
+    }
+  }
 }
 
 .panel-body {
-    text-align: left; 
- 
+  text-align: left;
+
 }
 
 .panel-group {
-    margin: 0;
+  margin: 0;
 }
 
 .patientAccordion {
-max-height: 800px; 
-overflow-y: auto;
+  max-height: 800px;
+  overflow-y: auto;
 }
-
- 
-

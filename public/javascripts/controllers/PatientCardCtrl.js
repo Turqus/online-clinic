@@ -6,14 +6,12 @@
     function PatientCardCtrl($scope, $http, $location) {
 
         $scope.init = () => {
-        $scope.toggle = false;
-            // $scope.selectedCard = [];
+            $scope.toggle = false;
             $scope.loadPatientCards();
         }
 
 
         $scope.expandMenu = (name) => {
-
             if ($scope.toggle == true && $scope.currentlyMenu == name) {
                 $scope.toggle = !$scope.toggle;
             } else {
@@ -23,27 +21,8 @@
             $scope.currentlyMenu = name;
         }
 
-        // $scope.test = (message, recipient) => {
-        //     if (recipient === 'Recepcji') message.recipient = 'bartlomiejflis94@gmail.com';
-        //     else if (recipient === 'Danuta Antoni') message.recipient = 'bartlomiejflis94@gmail.com';
-        //     else if (recipient === 'Marek Antoni') message.recipient = 'bartlomiejflis94@gmail.com';
-        //     else if (recipient === 'Jakub Antoni') message.recipient = 'bartlomiejflis94@gmail.com';
-
-
-        //     $http({
-        //         method: 'POST',
-        //         url: '/contact',
-        //         data: { message }
-        //     }).then(function successCallback(response) {
-        //         console.log('yoyo', response);
-        //     }, function errorCallback(response) {
-        //         console.log(response, 'error')
-        //     });
-        // }
-
 
         $scope.loadPatientCards = () => {
-
             $http({
                 method: "GET",
                 url: "/user/patient-card"

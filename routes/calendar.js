@@ -82,8 +82,8 @@ router.post('/change-a-date', (req, res) => {
             dd: calendarObj.date.dd,
             hour: calendarObj.date.hour,
             reserved: true,
-            patient: req.user.firstName + ' ' + req.user.surname,
-            patientID: req.user._id
+            patient: calendarObj.patient,
+            patientID: calendarObj.patientID
           }
 
           var calendar = new Calendar(newVisit);
@@ -97,8 +97,6 @@ router.post('/change-a-date', (req, res) => {
             })
 
         })
-
-
       }
     })
     .catch((err) => {
