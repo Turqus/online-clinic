@@ -1,10 +1,11 @@
+var expressValidator = require('express-validator');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var expressValidator = require('express-validator');
 var mongoose = require('mongoose');
 
 // module to login system
@@ -25,7 +26,7 @@ var User = require('./model/user.model');
 var Calendar = require('./model/calendar.model');
 
 var app = express();
-
+var expressValidator = require('express-validator');
 
 mongoose.connect('mongodb://localhost/Clinic', function (error) {
   if (error) {
@@ -33,13 +34,13 @@ mongoose.connect('mongodb://localhost/Clinic', function (error) {
   } else {
     console.log('connected');
     //=========================CONNNNNNECTTTTTTEEEEEEDDDDDDDDDDDDDDDD======================//
-
+    var expressValidator = require('express-validator');
 
     // parse application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: false }))
     // parse application/json
     app.use(bodyParser.json());
-
+    app.use(expressValidator())
 
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
